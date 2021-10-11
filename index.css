@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    --iteration: 10s;
+}
+
+.scene {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.sky, .ocean {
+    width: 100%;
+    height: 50%;
+}
+
+.sky {
+    background-color: #bd4f6c;
+    background-image: radial-gradient(circle at right, #bd4f6c, #d7816a);
+    background-size: 400% 400%;
+    position: relative;
+    -webkit-box-reflect: below 0 linear-gradient(transparent, rgba(0,0,0,0.7));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    animation: sky var(--iteration) ease infinite;
+}
+
+.ocean {
+    background-color: #a4508b;
+    background-image: radial-gradient(circle at center, #522343, #42052f);
+}
+
+.text {
+    font-size: 3em;
+    font-weight: bolder;
+    color: #ffffff;
+    z-index: 300;
+}
+
+.sun {
+    background-color: #a40606;
+    background-image: linear-gradient(315deg, #a40606 0%, #d98324 74%);
+
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    transform: translateY(20%);
+    animation: sun var(--iteration) ease infinite;
+    box-shadow: 0 0 100px 100px #fd8f3699, 0 0 200px 200px #ffa63299;
+}
+
+.star {
+    width: 0.3em;
+    height: 0.3em;
+    background-color: #ffffff;
+    z-index: -1;
+    border-radius: 50%;
+    animation: stars var(--iteration) infinite;
+    position: absolute;
+}
+
+@keyframes sun {
+    0% {
+        transform: translate(0, 100%);
+    }
+    40% {
+        transform: translate(0, -50%);
+    }
+    60% {
+        transform: translate(0, -50%);
+    }
+    100% {
+        transform: translate(0, 100%);
+    }
+}
+
+@keyframes sky {
+    0% {
+        background-position: 100% 400%;
+    }
+    40% {
+        background-position: 0% 0%;
+    }
+    60% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 400%;
+    }
+}
+
+@keyframes stars {
+    0% {
+        opacity: 100%;
+        transform: translate(0, 0);
+    }
+    40% {
+        transform: translate(-160px, -80px);
+        opacity: 0%
+    }
+
+    60% {
+        opacity: 0%;
+        transform: translate(80px, 40px);
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
